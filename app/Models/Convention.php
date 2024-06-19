@@ -19,6 +19,7 @@ class Convention extends Model
         'duree',
         'signature_cabinet',
         'status',
+        'fichier'
     ];
 
     public function etudiant()

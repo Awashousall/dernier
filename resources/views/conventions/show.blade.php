@@ -6,11 +6,17 @@
 
         <p><strong>ID:</strong> {{ $convention->id }}</p>
         <p><strong>Nom:</strong> {{ $convention->nom }}</p>
-        <p><strong>Preom:</strong> {{ $convention->prenom }}</p>
-        <p><strong>Adresse_email:</strong> {{ $convention->adresse_email }}</p>
-        <p><strong>ecole:</strong> {{ $convention->ecole }}</p>
-        <p><strong>durée:</strong> {{ $convention->duree }}</p>
-        <p><strong>signature_cabinet:</strong> {{ $convention->signature_cabinet }}</p>
+        <p><strong>Prénom:</strong> {{ $convention->prenom }}</p>
+        <p><strong>Adresse email:</strong> {{ $convention->adresse_email }}</p>
+        <p><strong>École:</strong> {{ $convention->ecole }}</p>
+        <p><strong>Durée:</strong> {{ $convention->duree }}</p>
+        <p><strong>Signature du Cabinet:</strong> {{ $convention->signature_cabinet }}</p>
+
+        @if ($convention->fichier)
+            <p><a href="{{ asset('storage/fichiers/' . $convention->fichier) }}" target="_blank">Télécharger le fichier</a></p>
+        @else
+            <p>Aucun fichier téléchargé</p>
+        @endif
 
         <a href="{{ route('conventions.edit', ['id' => $convention->id]) }}" class="btn btn-primary">Modifier</a>
 

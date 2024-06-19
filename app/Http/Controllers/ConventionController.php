@@ -18,14 +18,45 @@ class ConventionController extends Controller
     {
         return view('conventions.create');
     }
+    public function download($id)
+{
+    $convention = Convention::findOrFail($id);
+
+    // Vérifier si un fichier est associé à la convention
+    if ($convention->fichier) {
+        $file = storage_path('app/public/fichiers/' . $convention->fichier);
+
+        // Vérifier si le fichier existe physiquement
+        if (file_exists($file)) {
+            return response()->download($file);
+        } else {
+            return back()->with('error', 'Le fichier associé à cette convention n\'existe pas.');
+        }
+    }
+
+    return back()->with('error', 'Aucun fichier associé à cette convention.');
+}
 
     // Enregistre une nouvelle convention
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'nom' => 'required|string|max:255',
-            // autres règles de validation
+            'prenom' => 'required|string|max:255',
+            'adresse_email' => 'required|email|max:255',
+            'ecole' => 'required|string|max:255',
+            'duree' => 'required|string|max:255',
+            'signature_cabinet' => 'required|string|max:255',
+            'fichier' => 'file|max:2048',
         ]);
+
+        if ($request->hasFile('fichier')) {
+            $file = $request->file('fichier');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('public/fichiers', $filename); // Stocker dans le dossier de stockage "storage/app/public/fichiers"
+    
+            $validatedData['fichier'] = $filename; // Enregistrer le nom du fichier dans la base de données
+        }
 
         Convention::create($validatedData);
 
