@@ -1,0 +1,58 @@
+.form-title {
+    color: #007bff;
+    font-size: 32px;
+    font-style: italic;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="file"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+}
+
+.registration-form .form-section-title {
+    color: #343a40;
+    font-size: 24px;
+    font-style: italic;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.registration-form label {
+    color: #495057;
+    font-size: 18px;
+    font-style: italic;
+    margin-bottom: 5px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-style: italic;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
