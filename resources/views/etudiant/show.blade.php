@@ -16,20 +16,10 @@
     <p><strong>Statut:</strong> {{ $etudiant->statut }}</p>
     <p><strong>Diplôme Baccalauréat:</strong> <a href="{{ Storage::url($etudiant->diplome_baccalaureat_path) }}">Voir le fichier</a></p>
     <p><strong>Carte d'Identité ou Passeport:</strong> <a href="{{ Storage::url($etudiant->carte_identite_path) }}">Voir le fichier</a></p>
-    <p><strong>Bulletins:</strong></p>
-    <p><strong>Bulletins:</strong></p>
-<ul>
-    @if(is_array($etudiant->bulletins_paths))
-        @foreach($etudiant->bulletins_paths as $bulletin)
-            <li><a href="{{ Storage::url($bulletin) }}">Voir le fichier</a></li>
-        @endforeach
-    @else
-        <li>No bulletins available.</li>
+    <p><strong>Bulletin:</strong> <a href="{{ Storage::url($etudiant->bulletins_path) }}">Voir le fichier</a></p>
+    @if ($etudiant->autre_diplome_path)
+        <p><strong>Autre Diplôme :</strong> <a href="{{ Storage::url($etudiant->autre_diplome_path) }}" target="_blank">Voir le fichier</a></p>
     @endif
-</ul>
 
-    @if($etudiant->autre_diplome_path)
-        <p><strong>Autre Diplôme:</strong> <a href="{{ Storage::url($etudiant->autre_diplome_path) }}">Voir le fichier</a></p>
-    @endif
 </body>
 </html>

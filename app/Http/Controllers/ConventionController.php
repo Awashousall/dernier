@@ -48,6 +48,7 @@ class ConventionController extends Controller
             'duree' => 'required|string|max:255',
             'signature_cabinet' => 'required|string|max:255',
             'fichier' => 'file|max:2048',
+            'domaine' => 'required|string|max:255',
         ]);
 
         if ($request->hasFile('fichier')) {
@@ -87,6 +88,7 @@ class ConventionController extends Controller
         'ecole' => 'required|string|max:255',
         'duree' => 'required|string|max:255',
         'signature_cabinet' => 'required|string|max:255',
+        'domaine' => 'required|string|max:255',
         ]);
 
         Convention::whereId($id)->update($validatedData);

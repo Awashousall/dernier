@@ -56,6 +56,7 @@ class EtudiantController extends Controller
 
         // Gestion des fichiers
         $diplomeBaccalaureatPath = $request->file('diplome_baccalaureat')->store('diplomes', 'public');
+        $bulletinPath = $request->file('bulletin')->store('bulletins', 'public');
         $carteIdentitePath = $request->file('carte_identite')->store('identites', 'public');
         $bulletinsPaths = [];
         foreach ($request->file('bulletins') as $bulletin) {
@@ -88,8 +89,9 @@ class EtudiantController extends Controller
             'adresse_email' => $etudiant->email,
             'ecole' => $etudiant->universite,
             'duree' => '1 an', // Exemple de durée
-            'signature_cabinet' => 'Signature par le cabinet',
-            'status' => 'non traité'
+            'signature_cabinet' => 'sall',
+            'status' => 'non traité',
+            'domaine' => $etudiant->domaine,
         ]);
 
         return redirect()->route('etudiant.index')->with('success', 'Étudiant et convention créés avec succès.');

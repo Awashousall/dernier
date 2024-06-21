@@ -12,52 +12,62 @@ def generer_pdf_conventions(adresse_email):
         'database': 'nullable'  # Remplacez par le nom de votre base de données sur XAMPP
     }
 
-    # Connexion à la base de données
-    conn = mysql.connector.connect(**db_config)
-    cursor = conn.cursor()
+    try:
+        # Connexion à la base de données
+        conn = mysql.connector.connect(**db_config)
+        cursor = conn.cursor()
 
-    # Requête SQL pour récupérer les données spécifiques à l'adresse email
-    query = f"SELECT nom, prenom, adresse, adresse_email, ecole, duree, signature_cabinet, created_at FROM conventions WHERE adresse_email = '{adresse_email}'"
-    cursor.execute(query)
-    result = cursor.fetchall()
+        # Requête SQL pour récupérer les données spécifiques à l'adresse email
+        query = f"SELECT nom, prenom, adresse, adresse_email, ecole, duree, signature_cabinet, domaine, created_at FROM conventions WHERE adresse_email = '{adresse_email}'"
+        cursor.execute(query)
+        result = cursor.fetchall()
 
-    # Génération du fichier PDF
-    filename = f"conventions_{adresse_email.replace('@', '_').replace('.', '_')}.pdf"
-    c = canvas.Canvas(filename, pagesize=letter)
-    width, height = letter
+        # Génération du fichier PDF
+        filename = f"conventions_{adresse_email.replace('@', '_').replace('.', '_')}.pdf"
+        c = canvas.Canvas(filename, pagesize=letter)
+        width, height = letter
 
-    # Titre du PDF
-    c.setFont("Helvetica-Bold", 16)
-    c.drawString(30, height - 50, f"Convention pour {adresse_email}")
+        # Titre du PDF
+        c.setFont("Helvetica-Bold", 16)
+        c.drawString(30, height - 50, f"Convention pour {adresse_email}")
 
-    # Données à ajouter au PDF
-    c.setFont("Helvetica", 12)
-    y_start = height - 80
-    line_height = 15
+        # Données à ajouter au PDF
+        c.setFont("Helvetica", 12)
+        y_start = height - 80
+        line_height = 15
 
-    for row in result:
-        y = y_start
-        c.drawString(30, y, f"Nom: {row[0]}")  # Ajuster la position en fonction de la longueur de "Nom:"
-        y -= line_height
-        c.drawString(30, y, f"Prénom: {row[1]}")  # Ajuster la position en fonction de la longueur de "Prénom:"
-        y -= line_height
-        c.drawString(30, y, f"Adresse: {row[2]}")
-        y -= line_height
-        c.drawString(30, y, f"Email: {row[3]}")
-        y -= line_height
-        c.drawString(30, y, f"École: {row[4]}")
-        y -= line_height
-        c.drawString(30, y, f"Durée: {row[5]}")
-        y -= line_height
-        c.drawString(30, y, f"Signature: {row[6]}")
-        y -= line_height
-        c.drawString(30, y, f"Créé le: {row[7]}")
-        y -= line_height * 2  # Espacement entre les entrées
+        for row in result:
+            y = y_start
+            c.drawString(30, y, f"Nom: {row[0]}")
+            y -= line_height
+            c.drawString(30, y, f"Prénom: {row[1]}")
+            y -= line_height
+            c.drawString(30, y, f"Adresse: {row[2]}")
+            y -= line_height
+            c.drawString(30, y, f"Email: {row[3]}")
+            y -= line_height
+            c.drawString(30, y, f"École: {row[4]}")
+            y -= line_height
+            c.drawString(30, y, f"Durée: {row[5]}")
+            y -= line_height
+            c.drawString(30, y, f"Signature: {row[6]}")
+            y -= line_height
+            c.drawString(30, y, f"Domaine: {row[7]}")
+            y -= line_height
+            c.drawString(30, y, f"Créé le: {row[8]}")
+            y -= line_height * 2  # Espacement entre les entrées
 
-    # Sauvegarde et fermeture
-    c.save()
-    cursor.close()
-    conn.close()
+        # Sauvegarde et fermeture du fichier PDF
+        c.save()
+        print(f"Le PDF a été généré avec succès: {filename}")
+
+    except mysql.connector.Error as err:
+        print(f"Erreur MySQL: {err}")
+
+    finally:
+        if 'conn' in locals() and conn.is_connected():
+            cursor.close()
+            conn.close()
 
 # Vérification si le script est exécuté directement
 if __name__ == "__main__":
