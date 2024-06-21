@@ -12,12 +12,6 @@
         <p><strong>Durée:</strong> {{ $convention->duree }}</p>
         <p><strong>Signature du Cabinet:</strong> {{ $convention->signature_cabinet }}</p>
 
-        @if ($convention->fichier)
-            <p><a href="{{ asset('storage/fichiers/' . $convention->fichier) }}" target="_blank">Télécharger le fichier</a></p>
-        @else
-            <p>Aucun fichier téléchargé</p>
-        @endif
-
         <a href="{{ route('conventions.edit', ['id' => $convention->id]) }}" class="btn btn-primary">Modifier</a>
 
         <form action="{{ route('conventions.destroy', ['id' => $convention->id]) }}" method="POST" style="display: inline-block;">
