@@ -14,12 +14,29 @@
     <p><strong>Domaine:</strong> {{ $etudiant->domaine }}</p>
     <p><strong>Niveau:</strong> {{ $etudiant->niveau }}</p>
     <p><strong>Statut:</strong> {{ $etudiant->statut }}</p>
-    <p><strong>Diplôme Baccalauréat:</strong> <a href="{{ Storage::url($etudiant->diplome_baccalaureat_path) }}">Voir le fichier</a></p>
-    <p><strong>Carte d'Identité ou Passeport:</strong> <a href="{{ Storage::url($etudiant->carte_identite_path) }}">Voir le fichier</a></p>
-    <p><strong>Bulletin:</strong> <a href="{{ Storage::url($etudiant->bulletins_path) }}">Voir le fichier</a></p>
-    @if ($etudiant->autre_diplome_path)
-        <p><strong>Autre Diplôme :</strong> <a href="{{ Storage::url($etudiant->autre_diplome_path) }}" target="_blank">Voir le fichier</a></p>
+    
+    <p><strong>Diplôme Baccalauréat:</strong> 
+        <a href="{{ Storage::url($etudiant->diplome_baccalaureat_path) }}">Voir le fichier</a>
+    </p>
+    <p><strong>Carte d'Identité ou Passeport:</strong> 
+        <a href="{{ Storage::url($etudiant->carte_identite_path) }}">Voir le fichier</a>
+    </p>
+    
+    <p><strong>Bulletins:</strong></p>
+    @if (!empty($etudiant->bulletins_paths))
+        <ul>
+            @foreach ($etudiant->bulletins_paths as $bulletin)
+                <li><a href="{{ Storage::url($bulletin) }}">Voir le bulletin</a></li>
+            @endforeach
+        </ul>
+    @else
+        <p>Aucun bulletin disponible.</p>
     @endif
 
+    <p><strong>Contenu de bulletins_paths:</strong> {{ json_encode($etudiant->bulletins_paths) }}</p>
+    
+    <p><strong>Autre Diplôme:</strong> 
+        <a href="{{ Storage::url($etudiant->autre_diplome_path) }}">Voir le fichier</a>
+    </p>
 </body>
 </html>

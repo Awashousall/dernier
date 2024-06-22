@@ -1,11 +1,10 @@
 <?php
 
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
-use App\Models\Convention;;
+use App\Models\Convention;
 
 class EtudiantController extends Controller
 {
@@ -16,18 +15,6 @@ class EtudiantController extends Controller
         return view('etudiant.index', compact('etudiants'));
     }
 
-    public function show($id)
-{
-    $etudiant = Etudiant::find($id);
-
-    // Check if bulletins_paths is an array
-    if (!is_array($etudiant->bulletins_paths)) {
-        $etudiant->bulletins_paths = []; // or handle it accordingly
-    }
-
-    return view('etudiant.show', compact('etudiant'));
-}
-
     // Méthode pour afficher le formulaire de création d'un étudiant
     public function create()
     {
@@ -37,7 +24,7 @@ class EtudiantController extends Controller
     // Méthode pour stocker un nouvel étudiant
     public function store(Request $request)
     {
-        // Validation des données
+        // Validation des données du formulaire
         $validatedData = $request->validate([
             'nom' => 'required|string|max:255',
             'prenom' => 'required|string|max:255',
@@ -49,20 +36,25 @@ class EtudiantController extends Controller
             'niveau' => 'required|string|max:255',
             'diplome_baccalaureat' => 'required|file|mimes:pdf|max:2048',
             'carte_identite' => 'required|file|mimes:pdf|max:2048',
-            'bulletins' => 'required|array',
             'bulletins.*' => 'file|mimes:pdf|max:2048',
             'autre_diplome' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 
         // Gestion des fichiers
         $diplomeBaccalaureatPath = $request->file('diplome_baccalaureat')->store('diplomes', 'public');
-        $bulletinPath = $request->file('bulletin')->store('bulletins', 'public');
         $carteIdentitePath = $request->file('carte_identite')->store('identites', 'public');
+
         $bulletinsPaths = [];
-        foreach ($request->file('bulletins') as $bulletin) {
-            $bulletinsPaths[] = $bulletin->store('bulletins', 'public');
+        if ($request->hasFile('bulletins')) {
+            foreach ($request->file('bulletins') as $bulletin) {
+                $bulletinsPaths[] = $bulletin->store('bulletins', 'public');
+            }
         }
-        $autreDiplomePath = $request->hasFile('autre_diplome') ? $request->file('autre_diplome')->store('diplomes', 'public') : null;
+
+        $autreDiplomePath = null;
+        if ($request->hasFile('autre_diplome')) {
+            $autreDiplomePath = $request->file('autre_diplome')->store('diplomes', 'public');
+        }
 
         // Création de l'étudiant
         $etudiant = Etudiant::create([
@@ -94,7 +86,14 @@ class EtudiantController extends Controller
             'domaine' => $etudiant->domaine,
         ]);
 
+        // Redirection avec message de succès
         return redirect()->route('etudiant.index')->with('success', 'Étudiant et convention créés avec succès.');
     }
-}
 
+    // Méthode pour afficher un étudiant spécifique
+    public function show($id)
+    {
+        $etudiant = Etudiant::findOrFail($id);
+        return view('etudiant.show', compact('etudiant'));
+    }
+}

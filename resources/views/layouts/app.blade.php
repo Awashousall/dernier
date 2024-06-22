@@ -21,7 +21,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('conventions.index') }}">Conventions</a>
                     </li>
-                    <!-- Ajoutez d'autres liens de navigation ici selon vos besoins -->
                 </ul>
             </div>
         </div>

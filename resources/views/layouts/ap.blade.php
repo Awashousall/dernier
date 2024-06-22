@@ -10,11 +10,8 @@
 </head>
 <body>
     <header>
-        <div class="logo"> <span>S</span>UNU CABINET</div>
+        <img src="images/capture1.png" alt="Logo" class="reduced-image">
     </header>
-    <section class="home">
-        <img src="{{ asset('images/img3.png') }}" alt="Description de l'image">
-    </section>
 
     <!-- Affichage des messages de confirmation ou d'erreur -->
     @if(session('success'))

@@ -39,4 +39,11 @@ class Etudiant extends Model
     {
         return $this->hasOne(Convention::class);
     }
+
+    // Ajoutez cette méthode dans votre modèle Etudiant
+public function getBulletinsPathsAttribute($value)
+{
+    return json_decode($value, true); // Décodage du JSON en tableau associatif
+}
+
 }
