@@ -65,3 +65,63 @@
     margin: 0 0 10px 10px; /* Ajouter de l'espace autour de l'image */
 }
 
+.background-image {
+    background-image: url('../images/ins.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 50px; /* Adjust this value to move the container higher or lower */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.navbar-brand, .nav-link {
+    color: #007bff !important; /* Force the color to blue */
+}
+
+.display-4 {
+    font-weight: 700; /* Bold */
+    font-style: italic; /* Italic */
+    margin-bottom: 20px;
+    color: #007bff; /* Blue */
+}
+
+.lead {
+    font-size: 1.75rem; /* Larger font size */
+    font-weight: 300;
+    color: #007bff; /* Blue */
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    animation: marquee 10s linear infinite;
+}
+
+@keyframes marquee {
+    0%   { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.btn-attractive {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+    font-style: italic; /* Italic */
+}
+
+.btn-attractive:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+    color: white;
+}
+
+.card {
+    margin-bottom: 20px; /* Reduced margin to bring cards closer */
+}
