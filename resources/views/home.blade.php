@@ -5,7 +5,7 @@
 @section('content')
 <!-- Accueil -->
  
-<section class="home" style="background-image: url('{{ asset('https://www.terresdemontaigu.fr/wp-content/uploads/2019/12/Illustration-%C3%89tudiants-jeunes-actifs-Terres-de-Montaigu.jpg') }}'); background-position: center; background-size: cover; min-height: 100vh; display: flex; align-items: flex-end; padding-left: 30%; padding-bottom: 30px;">
+<section class="home" style="background-image: url('{{ asset('images/etudiant.jpg') }}'); background-position: center; background-size: cover; min-height: 100vh; display: flex; align-items: flex-end; padding-left: 30%; padding-bottom: 30px;">
 <div class="home-infos">
         <h1>Services pour les étudiants</h1>
         <p>Nous offrons des bourses d'études, innovantes et accréditées.</p>
@@ -79,7 +79,7 @@
 </section>
 
 <!-- Bannière -->
-<section class="banner"  style="background-image: url('{{ asset('https://th.bing.com/th/id/R.e8fbfe5040278c26410f0b700e6d9797?rik=EweK2xRGws3JzQ&riu=http%3a%2f%2fwww.les-gouv.com%2fimages%2farticle%2fmes-services-etudiant-gouv-fr.jpg&ehk=B%2fuozfosrMih2VKzjyeV5UgocuziTURlPp0oRzwkwxY%3d&risl=&pid=ImgRaw&r=0') }}'); background-position: center; background-size: cover; min-height: 100vh; display: flex; align-items: flex-end; padding-left: 30%; padding-bottom: 30px;">
+<section class="banner"  style="background-image: url('{{ asset('images/etudiant1.jfif') }}'); background-position: center; background-size: cover; min-height: 100vh; display: flex; align-items: flex-end; padding-left: 30%; padding-bottom: 30px;">
 
 </section>
 
