@@ -24,9 +24,6 @@
                         <li class="nav-item active">
                             <a class="nav-link text-primary" href="{{ url('/accueil') }}">Accueil</a>
                         </li>
-                        <li class="nav-item active">
-                            <a class="nav-link text-primary" href="{{ url('/contact') }}">Contact</a>
-                        </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">

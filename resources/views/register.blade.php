@@ -16,9 +16,6 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
-	<!-- Meta tag Keywords -->
-
-	<!-- css files -->
 	<link rel="stylesheet" href="./form_login/css/style.css" type="text/css" media="all" />
 	<!-- Style-CSS -->
 	<link href="./form_login/css/font-awesome.min.css" rel="stylesheet">
@@ -40,9 +37,10 @@
 
 		<div class="sub-main-w3">
 			<div class="bg-content-w3pvt">
-				<div class="top-content-style">
-					<img src="./form_login/images/user.jpg" alt="" />
-				</div>
+			<div class="top-content-style">
+    <img src="./form_login/images/nene.jfif" alt="Image Galle" width="150" height="150" />
+</div>
+
 				<form action="{{ route('register')}}" method="post">
                 @csrf
 					<p class="legend">Inscription<span class="fa fa-hand-o-down"></span></p>

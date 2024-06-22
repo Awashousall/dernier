@@ -38,7 +38,7 @@
 		<div class="sub-main-w3">
 			<div class="bg-content-w3pvt">
 				<div class="top-content-style">
-					<img src="./form_login/images/user.jpg" alt="" />
+					<img src="./form_login/images/nene.jfif" alt="" />
 				</div>
 				<form action="{{ route('login')}}" method="post">
                 @csrf
