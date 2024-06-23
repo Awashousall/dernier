@@ -37,7 +37,7 @@
                     <div class="card-body">
                         <h5 class="card-title text-secondary font-italic">Email</h5>
                         <p class="card-text">Envoyer les emails.</p>
-                        <form action="{{ route('dashboard.action') }}" method="POST">
+                        <form action="{{ route('send.email') }}" method="POST">
                             @csrf
                             <button type="submit" name="action" value="send_emails" class="btn btn-secondary btn-attractive">Envoyer les Emails</button>
                         </form>

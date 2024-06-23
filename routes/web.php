@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\ContactController;
 
 // PageController routes
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -47,3 +48,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 Route::post('/dashboard/action', [DashboardController::class, 'handleAction'])->name('dashboard.action');
+
+Route::view('/contact','contactform')->name('contactform');
+Route::post('/send', [ContactController::class, 'send'])->name('send.email');
+
