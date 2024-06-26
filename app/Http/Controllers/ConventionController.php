@@ -48,7 +48,8 @@ class ConventionController extends Controller
             'duree' => 'required|string|max:255',
             'signature_cabinet' => 'required|string|max:255',
             'fichier' => 'file|max:2048',
-            'domaine' => 'required|string|max:255',
+            'status' => 'required', // Assurez-vous que ce champ est requis
+            'domaine' => 'required', // Assurez-vous que ce champ est requis
         ]);
 
         if ($request->hasFile('fichier')) {
@@ -80,21 +81,23 @@ class ConventionController extends Controller
 
     // Met à jour une convention existante
     public function update(Request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'nom' => 'required|string|max:255',
-            'prenom' => 'required|string|max:255',
+{
+    $validatedData = $request->validate([
+        'nom' => 'required|string|max:255',
+        'prenom' => 'required|string|max:255',
         'adresse_email' => 'required|email|max:255',
         'ecole' => 'required|string|max:255',
         'duree' => 'required|string|max:255',
-        'signature_cabinet' => 'required|string|max:255',
-        'domaine' => 'required|string|max:255',
-        ]);
+        'status' => 'required|string|max:255', // Assurez-vous que ce champ est requis
+        'domaine' => 'required|string|max:255', // Assurez-vous que ce champ est requis
+        'signature_cabinet' => 'required|string|max:255', // Assurez-vous que ce champ est requis
+    ]);
 
-        Convention::whereId($id)->update($validatedData);
+    Convention::whereId($id)->update($validatedData);
 
-        return redirect()->route('conventions.index')->with('success', 'Convention mise à jour avec succès.');
-    }
+    return redirect()->route('conventions.index')->with('success', 'Convention mise à jour avec succès.');
+}
+
 
     // Supprime une convention de la base de données
     public function destroy($id)

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Université Dakar-Bourguiba - La Formation</title>
+    <title>Université IPROSI - La Formation</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         /* Ajout de styles spécifiques pour la page */
@@ -24,21 +24,17 @@
     <header>
         <nav>
             <ul>
-                <img src="{{ asset('images/image10.jpg') }}" alt="Image d'accueil" style="width: 100px; height: auto;">
+                <img src="{{ asset('images/ipros.png') }}" alt="Image d'accueil" style="width: 200px; height: auto;">
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="accueil" class="section-white">
-            <p class="welcome-text">Voici les programmes offerts par l'Université Unipro.</p>
+            <p class="welcome-text">Voici les programmes offerts par l'Université IPROSI.</p>
             <div>
                 <img src="{{ asset('images/image4.png') }}" alt="Image d'accueil" style="float: left; margin-right: 20px;">
-                <p>Le corps professoral de l'Université Unipro est composé de professeurs titulaires,
-                     de maîtres de conférence, de maîtres assistants, de docteurs, 
-                     d'ingénieurs et de professionnels. Tous sont inscrits sur une liste 
-                     d'aptitude et sont qualifiés pour remplir les fonctions et atteindre les objectifs 
-                     visés par l'université.</p>
+                
 
             </div>
         </section>
@@ -46,15 +42,15 @@
         <section id="ufr" class="section-yellow">
     <h2 style="font-weight: bold; font-style: italic;">Les Unités de Formation :</h2>
     <ul>
-    <li><strong>L'UFR de Génie Juridique et Politique</strong></li>
-<li><strong>L'UFR de Gestion Économique et Financière</strong></li>
-<li><strong>L'UFR des Sciences et Technologies de l'Ingénieur</strong></li>
-<li><strong>L'UFR des Langues, Cultures et Affaires Internationales</strong></li>
+    <li><strong>Sécurité des Systèmes Informatique de l’Entreprise(SESINE)</strong></li>
+<li><strong>Réseaux et Systèmes d’Information de l’Entreprise(RESINE)</strong></li>
+<li><strong>Formation en BTS TRANSIT</strong></li>
+<li><strong>BTS Informatique de GestionE</strong></li>
+<li><strong>Sécurité des Systèmes Informatique de l’Entreprise(SESINE)</strong></li>
 
     </ul>
 </section>
 
     </main>
-
 </body>
 </html>

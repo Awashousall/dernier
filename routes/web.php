@@ -8,15 +8,35 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PaymentController;
 
-// PageController routes
+
 Route::get('/', [PageController::class, 'home'])->name('home');
 Route::get('/inscription', [PageController::class, 'inscription'])->name('inscription');
 Route::get('/connexion', [PageController::class, 'connexion'])->name('connexion');
 Route::get('/deconnexion', [PageController::class, 'deconnexion'])->name('deconnexion');
+
+
 Route::get('/formation', [PageController::class, 'showFormation'])->name('formation');
 Route::get('/forme', [PageController::class, 'showForme'])->name('forme');
 Route::get('/presentation', [PageController::class, 'showPresentation'])->name('presentation');
+
+Route::get('/forma', [PageController::class, 'showf'])->name('format');
+Route::get('/form', [PageController::class, 'showfo'])->name('form');
+Route::get('/present', [PageController::class, 'showp'])->name('presenta');
+
+Route::get('/formas', [PageController::class, 'showfs'])->name('formats');
+Route::get('/forms', [PageController::class, 'showfos'])->name('forms');
+Route::get('/presents', [PageController::class, 'showps'])->name('presentas');
+
+Route::get('/formase', [PageController::class, 'showfse'])->name('formatse');
+Route::get('/formse', [PageController::class, 'showfose'])->name('formse');
+Route::get('/presentse', [PageController::class, 'showpse'])->name('presentase');
+
+
+Route::get('/formases', [PageController::class, 'showfses'])->name('formatses');
+Route::get('/formses', [PageController::class, 'showfoses'])->name('formses');
+Route::get('/presentses', [PageController::class, 'showpses'])->name('presentases');
 
 // EtudiantController routes
 Route::get('/etudiant/create', [EtudiantController::class, 'create'])->name('etudiant.create');
@@ -51,4 +71,13 @@ Route::post('/dashboard/action', [DashboardController::class, 'handleAction'])->
 
 Route::view('/contact','contactform')->name('contactform');
 Route::post('/send', [ContactController::class, 'send'])->name('send.email');
+
+
+
+Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('payment.form');
+
+
+Route::get('/payment/initiate', [TransactionsController::class, 'initiatePayment'])->name('payment.initiate');
+Route::get('/payment/return', [PaymentController::class, 'returnUrl'])->name('payment.return');
+Route::post('/payment/notify', [PaymentController::class, 'notifyUrl'])->name('payment.notify');
 

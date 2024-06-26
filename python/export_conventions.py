@@ -2,6 +2,7 @@ import sys
 import mysql.connector
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+from reportlab.lib.utils import ImageReader
 
 def generer_pdf_conventions(adresse_email):
     # Configuration de la connexion à la base de données
@@ -27,13 +28,22 @@ def generer_pdf_conventions(adresse_email):
         c = canvas.Canvas(filename, pagesize=letter)
         width, height = letter
 
+        # Ajout de la photo de connexion
+        image_path = 'Capture1.PNG'
+        image = ImageReader(image_path)
+        image_width, image_height = image.getSize()
+        aspect_ratio = image_width / image_height
+        desired_width = 50  # Largeur désirée pour la photo de connexion
+        desired_height = desired_width / aspect_ratio
+        c.drawImage(image, 30, height - desired_height - 30, width=desired_width, height=desired_height)
+
         # Titre du PDF
         c.setFont("Helvetica-Bold", 16)
-        c.drawString(30, height - 50, f"Convention pour {adresse_email}")
+        c.drawString(30, height - 50 - desired_height - 10, f"Convention pour {adresse_email}")
 
         # Données à ajouter au PDF
         c.setFont("Helvetica", 12)
-        y_start = height - 80
+        y_start = height - 80 - desired_height - 10
         line_height = 15
 
         for row in result:

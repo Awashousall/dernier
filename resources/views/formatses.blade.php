@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Université Dakar-Bourguiba - La Formation</title>
+    <title>Université BEBAEMPIRE - La Formation</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <style>
         /* Ajout de styles spécifiques pour la page */
@@ -85,12 +85,12 @@
             <nav>
                 <ul>
                 <li>
-  <img src="{{ asset('images/image10.jpg') }}" alt="Logo" style="width: 100px; height: auto;">
+  <img src="{{ asset('images/bebe.jpeg') }}" alt="Logo" style="width: 200px; height: auto;">
 </li>
 
                     <li><a href="#">ACCUEIL</a></li>
-                    <li><a href="{{ route('presentation') }}">PRÉSENTATION</a></li>
-                    <li><a href="{{ route('forme') }}">FORMATION</a></li>
+                    <li><a href="{{ route('presentases') }}">PRÉSENTATION</a></li>
+                    <li><a href="{{ route('formses') }}">FORMATION</a></li>
                     <li><a href="{{ route('etudiant.create') }}">S'INSCRIRE</a></li>
                 </ul>
             </nav>
@@ -100,8 +100,8 @@
     <main>
         <div class="container">
             <section id="accueil" class="section-white">
-                <p class="welcome-text">Bienvenue sur le site de l'Université Unipro.</p>
-                <img src="{{ asset('images/image11.PNG') }}" alt="Image d'accueil">
+                <p class="welcome-text">Bienvenue sur le site de BEBAEMPIRE.</p>
+                <img src="{{ asset('images/baba.png') }}" alt="Image d'accueil">
             </section>
 
             <section id="enseignements" class="section-white">
@@ -109,9 +109,5 @@
             </section>
         </div>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Université Unipro. Tous droits réservés.</p>
-    </footer>
 </body>
 </html>

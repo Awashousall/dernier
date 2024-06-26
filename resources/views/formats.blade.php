@@ -85,12 +85,12 @@
             <nav>
                 <ul>
                 <li>
-  <img src="{{ asset('images/image10.jpg') }}" alt="Logo" style="width: 100px; height: auto;">
+  <img src="{{ asset('images/hepo.png') }}" alt="Logo" style="width: 200px; height: auto;">
 </li>
 
                     <li><a href="#">ACCUEIL</a></li>
-                    <li><a href="{{ route('presentation') }}">PRÉSENTATION</a></li>
-                    <li><a href="{{ route('forme') }}">FORMATION</a></li>
+                    <li><a href="{{ route('presentas') }}">PRÉSENTATION</a></li>
+                    <li><a href="{{ route('forms') }}">FORMATION</a></li>
                     <li><a href="{{ route('etudiant.create') }}">S'INSCRIRE</a></li>
                 </ul>
             </nav>
@@ -100,8 +100,8 @@
     <main>
         <div class="container">
             <section id="accueil" class="section-white">
-                <p class="welcome-text">Bienvenue sur le site de l'Université Unipro.</p>
-                <img src="{{ asset('images/image11.PNG') }}" alt="Image d'accueil">
+                <p class="welcome-text">Bienvenue sur le site de l'Université HEPO.</p>
+                <img src="{{ asset('images/hepo-.jpg') }}" alt="Image d'accueil">
             </section>
 
             <section id="enseignements" class="section-white">
@@ -109,9 +109,5 @@
             </section>
         </div>
     </main>
-
-    <footer>
-        <p>&copy; 2024 Université Unipro. Tous droits réservés.</p>
-    </footer>
 </body>
 </html>

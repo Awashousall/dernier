@@ -23,6 +23,7 @@
                     <tr>
                         <td>{{ $convention->id }}</td>
                         <td>{{ $convention->nom }}</td>
+                        <td>{{ $convention->adresse_email }}</td>
                         <td>
                             <a href="{{ route('conventions.show', ['id' => $convention->id]) }}" class="btn btn-info btn-sm">Voir</a>
                             <a href="{{ route('conventions.edit', ['id' => $convention->id]) }}" class="btn btn-primary btn-sm">Modifier</a>

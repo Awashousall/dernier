@@ -10,8 +10,9 @@
         <p><strong>Adresse email:</strong> {{ $convention->adresse_email }}</p>
         <p><strong>École:</strong> {{ $convention->ecole }}</p>
         <p><strong>Durée:</strong> {{ $convention->duree }}</p>
+        <p><strong>Status:</strong> {{ $convention->status }}</p>
         <p><strong>Signature du Cabinet:</strong> {{ $convention->signature_cabinet }}</p>
-        <p><strong>Domaine:</strong> {{ $convention->ddommaine }}</p>
+        <p><strong>Domaine:</strong> {{ $convention->domaine }}</p>
 
         <a href="{{ route('conventions.edit', ['id' => $convention->id]) }}" class="btn btn-primary">Modifier</a>
 

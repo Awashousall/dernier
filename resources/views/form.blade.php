@@ -24,21 +24,17 @@
     <header>
         <nav>
             <ul>
-                <img src="{{ asset('images/image10.jpg') }}" alt="Image d'accueil" style="width: 100px; height: auto;">
+                <img src="{{ asset('images/hemi.png') }}" alt="Image d'accueil" style="width: 100px; height: auto;">
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="accueil" class="section-white">
-            <p class="welcome-text">Voici les programmes offerts par l'Université Unipro.</p>
+            <p class="welcome-text">Voici les programmes offerts par l'Université HEMI.</p>
             <div>
                 <img src="{{ asset('images/image4.png') }}" alt="Image d'accueil" style="float: left; margin-right: 20px;">
-                <p>Le corps professoral de l'Université Unipro est composé de professeurs titulaires,
-                     de maîtres de conférence, de maîtres assistants, de docteurs, 
-                     d'ingénieurs et de professionnels. Tous sont inscrits sur une liste 
-                     d'aptitude et sont qualifiés pour remplir les fonctions et atteindre les objectifs 
-                     visés par l'université.</p>
+                <p>la HEMI (Haute Ecole de Management et de l'Informatique) est une institution d'enseignement supérieur privée située au Sénégal. Elle se spécialise dans les domaines du management et de l'informatique, offrant des formations axées sur les métiers du management d'entreprise et des technologies de l'information.</p>
 
             </div>
         </section>
@@ -46,15 +42,14 @@
         <section id="ufr" class="section-yellow">
     <h2 style="font-weight: bold; font-style: italic;">Les Unités de Formation :</h2>
     <ul>
-    <li><strong>L'UFR de Génie Juridique et Politique</strong></li>
-<li><strong>L'UFR de Gestion Économique et Financière</strong></li>
-<li><strong>L'UFR des Sciences et Technologies de l'Ingénieur</strong></li>
-<li><strong>L'UFR des Langues, Cultures et Affaires Internationales</strong></li>
+    <li><strong>Management d'Entreprise(Formations axées sur la gestion stratégique, la finance, le marketing et les ressources humaines.)</strong></li>
+<li><strong>Informatique et Technologie(Cours spécialisés en développement logiciel, administration des systèmes, sécurité informatique et gestion de réseaux.)</strong></li>
 
     </ul>
 </section>
 
     </main>
+
 
 </body>
 </html>
