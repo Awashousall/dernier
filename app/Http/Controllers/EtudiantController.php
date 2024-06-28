@@ -14,6 +14,38 @@ class EtudiantController extends Controller
         $etudiants = Etudiant::all();
         return view('etudiant.index', compact('etudiants'));
     }
+    // Dans EtudiantController.php
+
+
+public function searchByDomaine(Request $request)
+{
+    $domaine = $request->input('domaine');
+
+    // Filtrer les étudiants par domaine et université Unipro si un domaine est spécifié
+    if ($domaine) {
+        $etudiants = Etudiant::where('universite', 'Unipro')
+                            ->where('domaine', $domaine)
+                            ->get();
+    } else {
+        // Retourner tous les étudiants de l'université Unipro si aucun domaine spécifié
+        $etudiants = Etudiant::where('universite', 'Unipro')->get();
+    }
+
+    return view('etudiant.index', compact('etudiants'));
+}
+
+
+    public function indexe()
+    {
+        $etudiants = Etudiant::where('universite', 'Unipro')->get();
+        return view('etudiant.indexe', compact('etudiants'));
+    }
+
+    public function indexee()
+    {
+        $etudiants = Etudiant::where('universite', 'Hemi')->get();
+        return view('etudiant.indexee', compact('etudiants'));
+    }
 
     // Méthode pour afficher le formulaire de création d'un étudiant
     public function create()

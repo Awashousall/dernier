@@ -21,6 +21,6 @@ class LogineController extends Controller
         if(Auth::attempt($auth))
         $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('universite');
     }
 }

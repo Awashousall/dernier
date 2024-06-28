@@ -8,9 +8,31 @@ use App\Http\Controllers\RegistereController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogineController;
 use App\Http\Controllers\DashboardController;
+
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\StudentController;
+
+
+// web.php
+use App\Http\Controllers\DashboardeController;
+
+Route::get('/', [DashboardeController::class, 'index'])->name('home');
+
+Route::get('/dashboard/unipro', [DashboardeController::class, 'uniproDashboard'])->name('dashboarde.unipro');
+Route::get('/dashboard/hemi', [DashboardeController::class, 'hemiDashboard'])->name('dashboarde.hemi');
+Route::get('/etudiants/search', [EtudiantController::class, 'searchByDomaine'])->name('etudiants.search');
+
+
+
+Route::get('/universite', [HomeController::class, 'index'])->name('universite');
+Route::get('/students', [StudentController::class, 'index'])->name('students.list');
+
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/students', [StudentController::class, 'index'])->name('students.list');
+
 
 
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -22,20 +44,15 @@ Route::get('/deconnexion', [PageController::class, 'deconnexion'])->name('deconn
 Route::get('/formation', [PageController::class, 'showFormation'])->name('formation');
 Route::get('/forme', [PageController::class, 'showForme'])->name('forme');
 Route::get('/presentation', [PageController::class, 'showPresentation'])->name('presentation');
-
 Route::get('/forma', [PageController::class, 'showf'])->name('format');
 Route::get('/form', [PageController::class, 'showfo'])->name('form');
 Route::get('/present', [PageController::class, 'showp'])->name('presenta');
-
 Route::get('/formas', [PageController::class, 'showfs'])->name('formats');
 Route::get('/forms', [PageController::class, 'showfos'])->name('forms');
 Route::get('/presents', [PageController::class, 'showps'])->name('presentas');
-
 Route::get('/formase', [PageController::class, 'showfse'])->name('formatse');
 Route::get('/formse', [PageController::class, 'showfose'])->name('formse');
 Route::get('/presentse', [PageController::class, 'showpse'])->name('presentase');
-
-
 Route::get('/formases', [PageController::class, 'showfses'])->name('formatses');
 Route::get('/formses', [PageController::class, 'showfoses'])->name('formses');
 Route::get('/presentses', [PageController::class, 'showpses'])->name('presentases');
@@ -44,6 +61,8 @@ Route::get('/presentses', [PageController::class, 'showpses'])->name('presentase
 Route::get('/etudiant/create', [EtudiantController::class, 'create'])->name('etudiant.create');
 Route::post('/etudiant', [EtudiantController::class, 'store'])->name('etudiant.store');
 Route::get('/etudiants', [EtudiantController::class, 'index'])->name('etudiant.index');
+Route::get('/etudiantes', [EtudiantController::class, 'indexe'])->name('etudiant.indexe');
+Route::get('/etudiantees', [EtudiantController::class, 'indexee'])->name('etudiant.indexee');
 Route::get('/etudiant/{id}', [EtudiantController::class, 'show'])->name('etudiant.show');
 
 // ConventionController routes

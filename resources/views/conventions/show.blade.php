@@ -13,6 +13,7 @@
         <p><strong>Status:</strong> {{ $convention->status }}</p>
         <p><strong>Signature du Cabinet:</strong> {{ $convention->signature_cabinet }}</p>
         <p><strong>Domaine:</strong> {{ $convention->domaine }}</p>
+        
 
         <a href="{{ route('conventions.edit', ['id' => $convention->id]) }}" class="btn btn-primary">Modifier</a>
 

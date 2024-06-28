@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Détails de l'étudiant</title>
+    <title>Liste des étudiants inscrits à Hemi</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <style>
         body {
@@ -35,21 +35,12 @@
             border-radius: 5px; /* Coins arrondis de 10px */
         }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .btn-primary {
-            width: 100%;
-        }
-
-        .table {
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            text-align: center;
+        .list-group-item {
+            border-color: #007bff !important; /* Couleur de bordure pour les éléments de la liste */
+            font-weight: bold; /* Texte en gras */
+            font-style: italic; /* Texte en italique */
+            padding: 5px; /* Réduire l'espace intérieur */
+            margin-bottom: 5px; /* Réduire l'espace entre les éléments de la liste */
         }
 
         /* Style pour les liens en bleu */
@@ -67,20 +58,19 @@
     <div class="bg-dark">
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark">
-            <img src="{{ asset('images/Capture1.PNG') }}" width="90" height="90" alt="Logo du site">
-                <a class="navbar-brand blue" href="#">Sunu_Cabinet</a>
+                <a class="navbar-brand blue" href="#">Logo du site</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item active">
-                            <a class="nav-link blue" href="index.html">Accueil</a>
+                            <a class="nav-link blue" href="#">Accueil</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
-                            <a class="nav-link blue" href="connexion.html">Logout</a>
+                            <a class="nav-link blue" href="#">Logout</a>
                         </li>
                     </ul>
                 </div>
@@ -89,47 +79,14 @@
     </div>
 
     <div class="container">
-        <h1>Détails de l'étudiant</h1>
-        <p><strong>Nom:</strong> {{ $etudiant->nom }}</p>
-        <p><strong>Prénom:</strong> {{ $etudiant->prenom }}</p>
-        <p><strong>Email:</strong> {{ $etudiant->email }}</p>
-        <p><strong>Téléphone:</strong> {{ $etudiant->telephone }}</p>
-        <p><strong>Adresse:</strong> {{ $etudiant->adresse }}</p>
-        <p><strong>Université:</strong> {{ $etudiant->universite }}</p>
-        <p><strong>Domaine:</strong> {{ $etudiant->domaine }}</p>
-        <p><strong>Niveau:</strong> {{ $etudiant->niveau }}</p>
-        <p><strong>Statut:</strong> {{ $etudiant->statut }}</p>
-        
-        <p><strong>Diplôme Baccalauréat:</strong> 
-            <a href="{{ Storage::url($etudiant->diplome_baccalaureat_path) }}">Voir le fichier</a>
-        </p>
-        <p><strong>Carte d'Identité ou Passeport:</strong> 
-            <a href="{{ Storage::url($etudiant->carte_identite_path) }}">Voir le fichier</a>
-        </p>
-        
-        <p><strong>Bulletins:</strong></p>
-        @if (is_array($etudiant->bulletins_paths) && count($etudiant->bulletins_paths) > 0)
-            <ul>
-                @foreach ($etudiant->bulletins_paths as $bulletin)
-                    <li><a href="{{ Storage::url($bulletin) }}">Voir le bulletin</a></li>
-                @endforeach
-            </ul>
-        @else
-            <p>Aucun bulletin disponible.</p>
-        @endif
-
-        <p><strong>Autre Diplôme:</strong> 
-            <a href="{{ Storage::url($etudiant->autre_diplome_path) }}">Voir le fichier</a>
-        </p>
-
-        <p><strong>CV:</strong> 
-    @if ($etudiant->cv_path)
-        <a href="{{ Storage::url($etudiant->cv_path) }}" target="_blank">Voir le fichier</a>
-    @else
-        Aucun CV disponible.
-    @endif
-</p>
-
+        <h1>Liste des étudiants inscrits à l'université Hemi</h1>
+        <ul class="list-group">
+            @foreach($etudiants as $etudiant)
+                <li class="list-group-item">
+                    <span style="font-style: italic; font-weight: bold;">{{ $etudiant->nom }} {{ $etudiant->prenom }}</span>
+                </li>
+            @endforeach
+        </ul>
     </div>
 
     <!-- Scripts Bootstrap (ne pas modifier) -->
