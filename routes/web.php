@@ -56,7 +56,9 @@ Route::get('/conventions/{id}/download', [ConventionController::class, 'download
 
 // RegisterController routes
 Route::get('/register', [RegisterController::class, 'form_register'])->name('register');
+Route::get('/registere', [RegisterController::class, 'form_registere'])->name('registere');
 Route::post('/register', [RegisterController::class, 'form_register_post'])->name('register');
+Route::post('/registere', [RegisterController::class, 'form_register_poste'])->name('registere');
 
 // LoginController routes
 Route::get('/login', [LoginController::class, 'form_login'])->name('login');
@@ -80,4 +82,7 @@ Route::get('/payment', [PaymentController::class, 'showPaymentForm'])->name('pay
 Route::get('/payment/initiate', [TransactionsController::class, 'initiatePayment'])->name('payment.initiate');
 Route::get('/payment/return', [PaymentController::class, 'returnUrl'])->name('payment.return');
 Route::post('/payment/notify', [PaymentController::class, 'notifyUrl'])->name('payment.notify');
+
+
+Route::get('/dashboard/search', [DashboardController::class, 'search'])->name('dashboard.search');
 

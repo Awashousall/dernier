@@ -8,6 +8,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <!-- Custom CSS -->
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <div class="bg-dark">
@@ -15,7 +16,7 @@
         <div class="row">
             <nav class="col navbar navbar-expand-lg navbar-dark">
                 <img src="{{ asset('images/Capture1.PNG') }}" width="90" height="90" alt="Logo du site">
-                <a class="navbar-brand text-primary" href="{{ url('/') }}">MediTeam</a>
+                <a class="navbar-brand text-primary" href="{{ url('/') }}"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -25,12 +26,28 @@
                             <a class="nav-link text-primary" href="{{ url('/accueil') }}">Accueil</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav ml-auto">
+                    
+                </div>
+                <div class="d-flex justify-content-end mb-4">
+            <form action="{{ route('dashboard.search') }}" method="GET" class="form-inline">
+                <div class="input-group">
+                    <input type="text" class="form-control" id="domain" name="domain" placeholder="">
+                    
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-link">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <ul class="navbar-nav ml-auto">
                         <li class="nav-item active">
+                            
                             <a class="nav-link text-primary" href="{{ url('/logout') }}">Logout</a>
                         </li>
                     </ul>
-                </div>
+        </div>
+
             </nav>
         </div>
     </div>
