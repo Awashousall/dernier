@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\ConventionController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RegistereController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogineController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
@@ -56,13 +58,17 @@ Route::get('/conventions/{id}/download', [ConventionController::class, 'download
 
 // RegisterController routes
 Route::get('/register', [RegisterController::class, 'form_register'])->name('register');
-Route::get('/registere', [RegisterController::class, 'form_registere'])->name('registere');
 Route::post('/register', [RegisterController::class, 'form_register_post'])->name('register');
-Route::post('/registere', [RegisterController::class, 'form_register_poste'])->name('registere');
+
+Route::get('/registere', [RegistereController::class, 'form_registere'])->name('registere');
+Route::post('/registere', [RegistereController::class, 'form_register_poste']);
 
 // LoginController routes
 Route::get('/login', [LoginController::class, 'form_login'])->name('login');
 Route::post('/login', [LoginController::class, 'form_login_post'])->name('login');
+
+Route::get('/logine', [LogineController::class, 'form_logine'])->name('logine');
+Route::post('/logine', [LogineController::class, 'form_login_poste'])->name('logine');
 
 // Dashboard routes
 Route::get('/dashboard', function () {

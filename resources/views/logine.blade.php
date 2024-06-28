@@ -2,7 +2,7 @@
 <html lang="zxx">
 
 <head>
-	<title>Création d'un compte</title>
+	<title>Se connecter</title>
 	<!-- Meta tag Keywords -->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta charset="UTF-8" />
@@ -16,6 +16,9 @@
 			window.scrollTo(0, 1);
 		}
 	</script>
+	<!-- Meta tag Keywords -->
+
+	<!-- css files -->
 	<link rel="stylesheet" href="./form_login/css/style.css" type="text/css" media="all" />
 	<!-- Style-CSS -->
 	<link href="./form_login/css/font-awesome.min.css" rel="stylesheet">
@@ -30,34 +33,19 @@
 
 <body>
 	<div class="main-bg">
-		<h1>Création d'un compte</h1>
-        @if(session('session_status'))
-        <div class="alert alert-success"> {{ session('session_status') }}</div>
-        @endif
+		<h1>Authentification</h1>
 
 		<div class="sub-main-w3">
 			<div class="bg-content-w3pvt">
-			<div class="top-content-style">
-    <img src="./form_login/images/nene.jfif" alt="Image Galle" width="150" height="150" />
-</div>
-
-				<form action="{{ route('registere')}}" method="post">
+				<div class="top-content-style">
+					<img src="./form_login/images/nene.jfif" alt="" />
+				</div>
+				<form action="{{ route('logine')}}" method="post">
                 @csrf
-					<p class="legend">Inscription<span class="fa fa-hand-o-down"></span></p>
-                    @if(session('status'))
-                    <div class="alert alert-success"> {{ session('status') }}</div>
-                    @endif
+					<p class="legend">Connexion<span class="fa fa-hand-o-down"></span></p>
 					<div class="input">
 						<input type="email" placeholder="Email" name="email" required />
 						<span class="fa fa-envelope"></span>
-					</div>
-                    <div class="input">
-						<input type="text" placeholder="Nom" name="nom" required />
-						<span class="fa fa-user"></span>
-					</div>
-                    <div class="input">
-						<input type="text" placeholder="Prenom" name="prenom" required />
-						<span class="fa fa-user"></span>
 					</div>
 					<div class="input">
 						<input type="password" placeholder="Mot de passe" name="password" required />
@@ -67,12 +55,7 @@
 						<span class="fa fa-sign-in"></span>
 					</button>
 				</form>
-				<p>
-				@if(session('status'))
-                    <div class="alert alert-success"> {{ session('status') }}</div>
-                    @endif
-				</p>
-				<a href="{{ route('logine')}}" class="bottom-text-w3ls">Déjà un compte? Se connecter</a>
+				<a href="{{ route('registere')}}" class="bottom-text-w3ls">Pas encore inscrit? Créer un compte</a>
 			</div>
 		</div>
 		<div class="copyright">
