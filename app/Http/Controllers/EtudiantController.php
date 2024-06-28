@@ -38,6 +38,7 @@ class EtudiantController extends Controller
             'carte_identite' => 'required|file|mimes:pdf|max:2048',
             'bulletins.*' => 'file|mimes:pdf|max:2048',
             'autre_diplome' => 'nullable|file|mimes:pdf|max:2048',
+            'cv' => 'nullable|file|mimes:pdf|max:2048',
         ]);
 
         // Gestion des fichiers
@@ -56,6 +57,11 @@ class EtudiantController extends Controller
             $autreDiplomePath = $request->file('autre_diplome')->store('diplomes', 'public');
         }
 
+        $cvPath = null;
+        if ($request->hasFile('cv')) {
+            $cvPath = $request->file('cv')->store('cv', 'public');
+        }
+
         // Création de l'étudiant
         $etudiant = Etudiant::create([
             'nom' => $validatedData['nom'],
@@ -70,6 +76,7 @@ class EtudiantController extends Controller
             'carte_identite_path' => $carteIdentitePath,
             'bulletins_paths' => json_encode($bulletinsPaths),
             'autre_diplome_path' => $autreDiplomePath,
+            'cv_path' => $cvPath,
         ]);
 
         // Création de la convention
@@ -87,7 +94,7 @@ class EtudiantController extends Controller
         ]);
 
         // Redirection avec message de succès
-        return redirect()->route('etudiant.index')->with('success', 'Étudiant et convention créés avec succès.');
+        return view('etudiant.create')->with('success', 'Étudiant créé avec succès.');
     }
 
     // Méthode pour afficher un étudiant spécifique

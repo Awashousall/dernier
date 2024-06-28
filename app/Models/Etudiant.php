@@ -22,6 +22,7 @@ class Etudiant extends Model
         'carte_identite_path',
         'bulletins_paths',
         'autre_diplome_path',
+        'cv_path',
         'statut',
     ];
 

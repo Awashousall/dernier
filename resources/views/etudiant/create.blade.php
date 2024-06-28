@@ -132,12 +132,20 @@
                     <label for="carte_identite" class="label-blue">Carte d'Identité ou Passeport:</label>
                     <input type="file" class="form-control-file" id="carte_identite" name="carte_identite" required>
                 </div>
+                <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cv" class="label-blue">CV:</label>
+                    <input type="file" class="form-control-file" id="cv" name="cv">
+                </div>
 
                 <div class="form-group col-md-6">
                     <label for="bulletins" class="label-blue">Bulletins (Seconde, Première, Terminale):</label>
                     <input type="file" class="form-control-file" id="bulletins" name="bulletins[]" multiple required>
                 </div>
             </div>
+                
+            
+            
 
             <button type="submit" class="btn btn-primary">S'inscrire</button>
         </form>

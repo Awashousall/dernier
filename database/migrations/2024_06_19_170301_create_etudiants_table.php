@@ -22,6 +22,7 @@ class CreateEtudiantsTable extends Migration
             $table->string('carte_identite_path');
             $table->json('bulletins_paths');
             $table->string('autre_diplome_path')->nullable();
+            $table->string('cv_path')->nullable()->change();
             $table->timestamps();
         });
     }
