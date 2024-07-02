@@ -59,7 +59,7 @@
         <div class="container">
             <nav class="navbar navbar-expand-lg navbar-dark">
             <img src="{{ asset('images/Capture1.PNG') }}" width="90" height="90" alt="Logo du site">
-                <a class="navbar-brand blue" href="index.html">MediTeam</a>
+                <a class="navbar-brand blue" href="index.html"></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>

@@ -55,7 +55,7 @@
 						<span class="fa fa-sign-in"></span>
 					</button>
 				</form>
-				<a href="{{ route('register')}}" class="bottom-text-w3ls">Pas encore inscrit? Créer un compte</a>
+				
 			</div>
 		</div>
 		<div class="copyright">

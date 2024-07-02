@@ -11,10 +11,11 @@ use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ContacteController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
-
+use App\Http\Controllers\SchoolController;
 
 // web.php
 use App\Http\Controllers\DashboardeController;
@@ -25,6 +26,18 @@ Route::get('/dashboard/unipro', [DashboardeController::class, 'uniproDashboard']
 Route::get('/dashboard/hemi', [DashboardeController::class, 'hemiDashboard'])->name('dashboarde.hemi');
 Route::get('/etudiants/search', [EtudiantController::class, 'searchByDomaine'])->name('etudiants.search');
 
+Route::get('/etudiant/{id}/cv', [EtudiantController::class, 'interrogerCV'])->name('etudiant.cv');
+
+
+Route::get('etudiants/{id}/details', [EtudiantController::class, 'details'])->name('etudiants.details');
+Route::get('etudiants/{id}/modifier', [EtudiantController::class, 'modifier'])->name('etudiants.modifier');
+Route::put('etudiants/{id}', [EtudiantController::class, 'update'])->name('etudiants.update');
+Route::resource('etudiants', EtudiantController::class)->except(['show', 'edit']);
+
+
+Route::get('/schools/create', [SchoolController::class, 'create'])->name('schools.create');
+Route::post('/schools', [SchoolController::class, 'store'])->name('schools.store');
+Route::get('/schools', [SchoolController::class, 'index'])->name('schools.index');
 
 
 Route::get('/universite', [HomeController::class, 'index'])->name('universite');
@@ -61,9 +74,31 @@ Route::get('/presentses', [PageController::class, 'showpses'])->name('presentase
 Route::get('/etudiant/create', [EtudiantController::class, 'create'])->name('etudiant.create');
 Route::post('/etudiant', [EtudiantController::class, 'store'])->name('etudiant.store');
 Route::get('/etudiants', [EtudiantController::class, 'index'])->name('etudiant.index');
+
 Route::get('/etudiantes', [EtudiantController::class, 'indexe'])->name('etudiant.indexe');
 Route::get('/etudiantees', [EtudiantController::class, 'indexee'])->name('etudiant.indexee');
 Route::get('/etudiant/{id}', [EtudiantController::class, 'show'])->name('etudiant.show');
+Route::get('/etudiants', [EtudiantController::class, 'index'])->name('etudiants.index');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/etudiants', [EtudiantController::class, 'index'])->name('etudiant.index');
+    // Ajoutez d'autres routes pour les actions liées aux étudiants si nécessaire
+});
+
+// web.php
+
+use Illuminate\Support\Facades\Auth;
+
+// Route pour la déconnexion
+Route::post('/logout', function () {
+    Auth::logout();
+    return redirect('/login');
+})->name('logout');
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+Route::get('/contacte', [ContacteController::class, 'index'])->name('contacte');
+
 
 // ConventionController routes
 Route::get('/conventions', [ConventionController::class, 'index'])->name('conventions.index');

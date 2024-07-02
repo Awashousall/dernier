@@ -23,7 +23,8 @@
                 <div class="collapse navbar-collapse" id="navbarContent">
                     <ul class="navbar-nav">
                         <li class="nav-item active">
-                            <a class="nav-link text-primary" href="{{ url('/accueil') }}">Accueil</a>
+                            <a class="nav-link text-primary" href="{{ url('/') }}">Accueil</a>
+                            
                         </li>
                     </ul>
                     
@@ -41,11 +42,14 @@
                 </div>
             </form>
             <ul class="navbar-nav ml-auto">
-                        <li class="nav-item active">
-                            
-                            <a class="nav-link text-primary" href="{{ url('/logout') }}">Logout</a>
-                        </li>
-                    </ul>
+    <li class="nav-item active">
+        <form action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-link nav-link text-primary">Logout</button>
+        </form>
+    </li>
+</ul>
+
         </div>
 
             </nav>
@@ -63,13 +67,7 @@
     <div class="container">
         <div class="row">
             <div class="col">
-                <ul class="list-inline text-center">
-                    <li class="list-inline-item"><a href="#">À propos</a></li>
-                    <li class="list-inline-item">&middot;</li>
-                    <li class="list-inline-item"><a href="#">Vie privée</a></li>
-                    <li class="list-inline-item">&middot;</li>
-                    <li class="list-inline-item"><a href="#">Conditions d'utilisation</a></li>
-                </ul>
+                
             </div>
         </div>
     </div>

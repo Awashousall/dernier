@@ -107,16 +107,8 @@
             <a href="{{ Storage::url($etudiant->carte_identite_path) }}">Voir le fichier</a>
         </p>
         
-        <p><strong>Bulletins:</strong></p>
-        @if (is_array($etudiant->bulletins_paths) && count($etudiant->bulletins_paths) > 0)
-            <ul>
-                @foreach ($etudiant->bulletins_paths as $bulletin)
-                    <li><a href="{{ Storage::url($bulletin) }}">Voir le bulletin</a></li>
-                @endforeach
-            </ul>
-        @else
-            <p>Aucun bulletin disponible.</p>
-        @endif
+        
+        
 
         <p><strong>Autre Diplôme:</strong> 
             <a href="{{ Storage::url($etudiant->autre_diplome_path) }}">Voir le fichier</a>

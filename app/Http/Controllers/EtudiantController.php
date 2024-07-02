@@ -5,35 +5,93 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Etudiant;
 use App\Models\Convention;
+use Smalot\PdfParser\Parser;
 
 class EtudiantController extends Controller
 {
+    public function extractCVText($cvPath)
+    {
+        $parser = new Parser();
+        $pdf = $parser->parseFile(public_path($cvPath));
+        
+        // Extraction du texte brut du PDF
+        $text = $pdf->getText();
+
+        return $text;
+    }
+
+    public function modifier($id)
+    {
+        $etudiant = Etudiant::findOrFail($id);
+        return view('etudiant.modifier', compact('etudiant'));
+    }
+
+    public function details($id)
+    {
+        $etudiant = Etudiant::findOrFail($id);
+        return view('etudiant.details', compact('etudiant'));
+    }
+
     // Méthode pour afficher la liste des étudiants
     public function index()
     {
         $etudiants = Etudiant::all();
         return view('etudiant.index', compact('etudiants'));
     }
-    // Dans EtudiantController.php
 
+    public function searchByDomaine(Request $request)
+    {
+        $domaine = $request->input('domaine');
 
-public function searchByDomaine(Request $request)
-{
-    $domaine = $request->input('domaine');
+        // Filtrer les étudiants par domaine et université Unipro si un domaine est spécifié
+        if ($domaine) {
+            $etudiants = Etudiant::where('universite', 'Unipro')
+                                ->where('domaine', $domaine)
+                                ->get();
+        } else {
+            // Retourner tous les étudiants de l'université Unipro si aucun domaine spécifié
+            $etudiants = Etudiant::where('universite', 'Unipro')->get();
+        }
 
-    // Filtrer les étudiants par domaine et université Unipro si un domaine est spécifié
-    if ($domaine) {
-        $etudiants = Etudiant::where('universite', 'Unipro')
-                            ->where('domaine', $domaine)
-                            ->get();
-    } else {
-        // Retourner tous les étudiants de l'université Unipro si aucun domaine spécifié
-        $etudiants = Etudiant::where('universite', 'Unipro')->get();
+        return view('etudiant.index', compact('etudiants'));
     }
 
-    return view('etudiant.index', compact('etudiants'));
-}
+    public function interrogerCV($etudiantId)
+    {
+        // Récupérer l'étudiant
+        $etudiant = Etudiant::findOrFail($etudiantId);
 
+        // Exemple d'extraction et d'analyse du texte du CV
+        $cvText = $this->extractCVText($etudiant->cv_path);
+
+        // Vous pouvez ajouter ici la logique pour analyser le texte extrait du CV
+
+        // Par exemple, recherche de mots clés ou de compétences dans le texte
+
+        return view('etudiant.cv', compact('etudiant', 'cvText'));
+    }
+
+    public function searchByCompetences(Request $request)
+    {
+        $competenceRecherchee = $request->input('competence');
+
+        // Récupère tous les étudiants de l'Université Unipro
+        $etudiants = Etudiant::where('universite', 'Unipro')->get();
+
+        $etudiantsAvecCompetences = [];
+
+        foreach ($etudiants as $etudiant) {
+            // Extraction du texte brut du CV
+            $cvText = $this->extractCVText($etudiant->cv_path);
+
+            // Simulation de recherche de compétences dans le texte du CV
+            if (stripos($cvText, $competenceRecherchee) !== false) {
+                $etudiantsAvecCompetences[] = $etudiant;
+            }
+        }
+
+        return view('etudiant.index', compact('etudiantsAvecCompetences'));
+    }
 
     public function indexe()
     {
@@ -126,7 +184,68 @@ public function searchByDomaine(Request $request)
         ]);
 
         // Redirection avec message de succès
-        return view('etudiant.create')->with('success', 'Étudiant créé avec succès.');
+        return redirect()->route('etudiants.details', $etudiant->id)->with('success', 'Étudiant créé avec succès.');
+    }
+
+    // Méthode pour mettre à jour un étudiant existant
+    public function update(Request $request, $id)
+    {
+        // Validation des données du formulaire
+        $validatedData = $request->validate([
+            'nom' => 'required|string|max:255',
+            'prenom' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:etudiants,email,' . $id,
+            'telephone' => 'required|string|max:20',
+            'adresse' => 'required|string|max:255',
+            'universite' => 'required|string|max:255',
+            'domaine' => 'required|string|max:255',
+            'niveau' => 'required|string|max:255',
+            'diplome_baccalaureat' => 'nullable|file|mimes:pdf|max:2048',
+            'carte_identite' => 'nullable|file|mimes:pdf|max:2048',
+            'bulletins.*' => 'nullable|file|mimes:pdf|max:2048',
+            'autre_diplome' => 'nullable|file|mimes:pdf|max:2048',
+            'cv' => 'nullable|file|mimes:pdf|max:2048',
+        ]);
+
+        // Récupération de l'étudiant
+        $etudiant = Etudiant::findOrFail($id);
+
+        // Gestion des fichiers
+        if ($request->hasFile('diplome_baccalaureat')) {
+            $etudiant->diplome_baccalaureat_path = $request->file('diplome_baccalaureat')->store('diplomes', 'public');
+        }
+        if ($request->hasFile('carte_identite')) {
+            $etudiant->carte_identite_path = $request->file('carte_identite')->store('identites', 'public');
+        }
+        if ($request->hasFile('bulletins')) {
+            $bulletinsPaths = [];
+            foreach ($request->file('bulletins') as $bulletin) {
+                $bulletinsPaths[] = $bulletin->store('bulletins', 'public');
+            }
+            $etudiant->bulletins_paths = json_encode($bulletinsPaths);
+        }
+        if ($request->hasFile('autre_diplome')) {
+            $etudiant->autre_diplome_path = $request->file('autre_diplome')->store('diplomes', 'public');
+        }
+        if ($request->hasFile('cv')) {
+            $etudiant->cv_path = $request->file('cv')->store('cv', 'public');
+        }
+
+        // Mise à jour des autres attributs
+        $etudiant->nom = $validatedData['nom'];
+        $etudiant->prenom = $validatedData['prenom'];
+        $etudiant->email = $validatedData['email'];
+        $etudiant->telephone = $validatedData['telephone'];
+        $etudiant->adresse = $validatedData['adresse'];
+        $etudiant->universite = $validatedData['universite'];
+        $etudiant->domaine = $validatedData['domaine'];
+        $etudiant->niveau = $validatedData['niveau'];
+
+        // Sauvegarde des modifications
+        $etudiant->save();
+
+        // Redirection avec message de succès
+        return redirect()->route('etudiants.details', $etudiant->id)->with('success', 'Étudiant mis à jour avec succès.');
     }
 
     // Méthode pour afficher un étudiant spécifique

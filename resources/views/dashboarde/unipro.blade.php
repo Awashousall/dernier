@@ -14,15 +14,16 @@
         <h1>Liste des étudiants inscrits à l'université Unipro</h1>
           
         <!-- Formulaire de recherche par domaine -->
-    <form action="{{ route('etudiants.search') }}" method="GET" class="form-inline mb-3">
-        <div class="input-group">
-            <input type="text" class="form-control" id="domaine" name="domaine" placeholder="Rechercher par domaine...">
-            <div class="input-group-append">
-                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+        <form action="{{ route('etudiants.search') }}" method="GET" class="form-inline mb-3">
+            <div class="input-group">
+                <input type="text" class="form-control" id="domaine" name="domaine" placeholder="Rechercher par domaine...">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
+                </div>
             </div>
-        </div>
-    </form>
+        </form>
 
+        <!-- Liste des étudiants -->
         <ul class="list-group">
             @foreach($etudiants as $etudiant)
                 <li class="list-group-item">

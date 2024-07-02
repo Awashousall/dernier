@@ -5,7 +5,7 @@
 @section('content')
 <!-- Accueil -->
  
-<section class="home" style="background-image: url('{{ asset('images/etudiant.jpg') }}'); background-position: center; background-size: cover; min-height: 100vh; display: flex; align-items: flex-end; padding-left: 30%; padding-bottom: 30px;">
+<section class="home" style="background-image: url('{{ asset('images/senegal.jpg') }}'); background-position: center; background-size: cover; min-height: 100vh; display: flex; align-items: flex-end; padding-left: 30%; padding-bottom: 30px;">
 <div class="home-infos">
         <h1>Services pour les étudiants</h1>
         <p>Nous offrons des bourses d'études, innovantes et accréditées.</p>
@@ -56,7 +56,6 @@
     <div class="left">
         <span>Nos Services</span>
         <h1>DES OBJECTIFS SPÉCIFIQUES POUR VOTRE PARCOURS SERONT DÉTERMINÉS PAR VOUS ET VOTRE CONSEILLER</h1>
-        <a href="#">PRENEZ RENDEZ-VOUS</a>
     </div>
     <div class="right">
         <p>Votre réussite académique est notre priorité. Nous travaillons avec vous pour établir des objectifs clairs et atteignables, tout en vous offrant le soutien nécessaire tout au long de votre parcours.</p>
@@ -64,3 +63,5 @@
     </div>
 </section>
 @endsection
+
+
