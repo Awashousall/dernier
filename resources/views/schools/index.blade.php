@@ -1,5 +1,3 @@
-<!-- resources/views/schools/index.blade.php -->
-
 @extends('layouts.app')
 
 @section('content')
@@ -14,6 +12,11 @@
                             <h5 class="card-title">{{ $school->school_name }}</h5>
                             <p class="card-text"><strong>Formation:</strong> {{ $school->formation }}</p>
                             <p class="card-text"><strong>Présentation:</strong> {{ $school->presentation }}</p>
+                            <form action="{{ route('schools.destroy', $school->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette école ?');">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

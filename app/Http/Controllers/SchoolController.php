@@ -18,6 +18,17 @@ class SchoolController extends Controller
     {
         return view('schools.create');
     }
+    public function destroy($id)
+    {
+        $school = School::find($id);
+
+        if ($school) {
+            $school->delete();
+            return redirect()->route('schools.index')->with('success', 'École supprimée avec succès');
+        }
+
+        return redirect()->route('schools.index')->with('error', 'École non trouvée');
+    }
 
     public function store(Request $request)
     {

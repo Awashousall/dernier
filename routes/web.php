@@ -21,6 +21,7 @@ use App\Http\Controllers\SchoolController;
 use App\Http\Controllers\DashboardeController;
 
 Route::get('/', [DashboardeController::class, 'index'])->name('home');
+Route::resource('schools', SchoolController::class);
 
 Route::get('/dashboard/unipro', [DashboardeController::class, 'uniproDashboard'])->name('dashboarde.unipro');
 Route::get('/dashboard/hemi', [DashboardeController::class, 'hemiDashboard'])->name('dashboarde.hemi');

@@ -32,6 +32,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Carte pour Lister les Conventions -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
                 <div class="card">
@@ -45,7 +46,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Carte pour Envoyer les Emails -->
             <div class="col-12 col-md-6 col-lg-4 mb-4">
                 <div class="card">
@@ -59,18 +60,30 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-md-6 col-lg-4 mb-4">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title text-primary font-italic">Ajout d'une école</h5>
-            <p class="card-text">Ajouter une école.</p>
-            <a href="{{ route('schools.create') }}" class="btn btn-primary btn-attractive">Ajouter</a>
-        </div>
-    </div>
-</div>
 
-        
+            <!-- Carte pour Ajouter une École -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary font-italic">Ajout d'une école</h5>
+                        <p class="card-text">Ajouter une école.</p>
+                        <a href="{{ route('schools.create') }}" class="btn btn-primary btn-attractive">Ajouter</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carte pour Lister les Écoles -->
+            <div class="col-12 col-md-6 col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary font-italic">Lister les Écoles</h5>
+                        <p class="card-text">Voir la liste des écoles.</p>
+                        <a href="{{ route('schools.index') }}" class="btn btn-primary btn-attractive">Lister les Écoles</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <!-- Footer -->
