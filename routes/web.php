@@ -22,6 +22,12 @@ use App\Http\Controllers\DashboardeController;
 
 Route::get('/', [DashboardeController::class, 'index'])->name('home');
 Route::resource('schools', SchoolController::class);
+// Search form route
+Route::get('/search', [App\Http\Controllers\SchoolController::class, 'searchForm'])->name('schools.search.form');
+
+// Search results route
+Route::get('/search/results', [App\Http\Controllers\SchoolController::class, 'searchResults'])->name('schools.search.results');
+
 
 Route::get('/dashboard/unipro', [DashboardeController::class, 'uniproDashboard'])->name('dashboarde.unipro');
 Route::get('/dashboard/hemi', [DashboardeController::class, 'hemiDashboard'])->name('dashboarde.hemi');

@@ -59,6 +59,7 @@
         <img src="images/capture1.png" alt="Logo" class="reduced-image">
         <nav>
             <ul class="nav-links">
+            <li><a href="{{ route('schools.search.form') }}" class="btn btn-primary">Rechercher une formation</a></li> <!-- Search link -->
                 <li><a href="{{ route('login')}}">Login</a></li>
                 <li><a href="#">Services</a></li>
                 <li><a href="{{ route('contacte') }}" class="btn btn-primary">Contact</a>

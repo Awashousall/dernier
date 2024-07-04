@@ -14,6 +14,20 @@ class SchoolController extends Controller
         return view('schools.index', compact('schools'));
     }
 
+    public function searchForm()
+{
+    return view('schools.search');
+}
+
+public function searchResults(Request $request)
+{
+    $query = $request->input('formation');
+    $schools = School::where('formation', 'like', '%' . $query . '%')->get();
+
+    return view('schools.search_results', compact('schools'));
+}
+
+
     public function create()
     {
         return view('schools.create');
