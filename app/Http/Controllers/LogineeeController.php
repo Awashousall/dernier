@@ -9,7 +9,7 @@ class LogineeeController extends Controller
 {
     public function showLoginForm()
     {
-        return view('autre-nom'); // Remplacez par le nom de votre vue de formulaire
+        return view('autre-nom'); // Assurez-vous de remplacer 'autre-nom' par le nom de votre vue de formulaire
     }
 
     public function autreMethodeLogin(Request $request)
@@ -18,14 +18,15 @@ class LogineeeController extends Controller
             'email' => 'required|email',
             'password' => 'required',
         ]);
-
-        if (Auth::guard('etudiants')->attempt($credentials)) { // Utilisation de la garde 'etudiants'
+    
+        if (Auth::guard('etudiants')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('sall'); // Redirection après connexion réussie
+            return redirect()->intended('sall'); // Assurez-vous que 'sall' est la route ou l'URL de destination après la connexion
         }
-
+    
         return back()->withErrors([
             'email' => 'Les identifiants fournis ne correspondent pas à nos enregistrements.',
         ]);
     }
 }
+    

@@ -1,16 +1,15 @@
-@extends('layouts.app')
+@extends('layouts.autre-layout')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('awasall@esp.sn') }}</div>
+                <div class="card-header">{{ __('Adresse email connectée : ') . Auth::guard('etudiants')->user()->email }}</div>
 
-                
-
-                    <!-- Lien pour lister tous les étudiants -->
-                    <a href="{{ route('etudiant.index') }}" class="btn btn-secondary">Lister detail</a>
+                <div class="card-body">
+                    <!-- Lien pour afficher les détails de l'étudiant -->
+                    <a href="{{ route('etudiants.details', ['id' => Auth::guard('etudiants')->user()->id]) }}" class="btn btn-secondary">Voir mes détails</a>
                 </div>
             </div>
         </div>
