@@ -16,6 +16,38 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\LogineeController;
+use App\Http\Controllers\LogineeeController;
+use App\Http\Controllers\Auth\CustomLoginController;
+use App\Http\Controllers\SomeController;
+use App\Http\Controllers\FileController;
+use App\Http\Controllers\AuthController;
+
+
+use App\Http\Controllers\Auth\EnregistrementController;
+Route::get('/loginn', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/loginn', [AuthController::class, 'login']);
+Route::post('/logoutt', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('/enregistrement', [EnregistrementController::class, 'showEnregistrementForm'])->name('enregistrement.form');
+Route::post('/enregistrement', [EnregistrementController::class, 'enregistrer'])->name('enregistrement.enregistrer');
+Route::get('/inscriptione', 'App\Http\Controllers\InscriptionController@showRegistrationForm')->name('inscription.form');
+Route::post('/inscriptione', 'App\Http\Controllers\InscriptionController@register')->name('inscription.submit');
+
+
+// routes/web.php
+Route::get('/logineee', [CustomLoginController::class, 'showLoginForm'])->name('custom.login');
+Route::post('/logine', [CustomLoginController::class, 'logine'])->name('custom.logine');
+Route::get('/sall', [SomeController::class, 'sallMethod'])->name('sall');
+
+
+Route::get('/loginee/login', [LogineeController::class, 'showLoginForm'])->name('loginee.login');
+Route::post('/loginee/login', [LogineeController::class, 'login']);
+Route::post('/loginee/logout', [LogineeController::class, 'logout'])->name('loginee.logout');
+
+Route::get('/loginne', [LoginController::class, 'showLoginForm'])->name('loginne');
+Route::post('/loginne', [LoginController::class, 'login']);
+
 
 // web.php
 use App\Http\Controllers\DashboardeController;
@@ -130,6 +162,9 @@ Route::post('/login', [LoginController::class, 'form_login_post'])->name('login'
 
 Route::get('/logine', [LogineController::class, 'form_logine'])->name('logine');
 Route::post('/logine', [LogineController::class, 'form_login_poste'])->name('logine');
+
+Route::get('/logineeee', [LogineeeController::class, 'showLoginForm'])->name('login.form');
+Route::post('/autre-nom', [LogineeeController::class, 'autreMethodeLogin'])->name('autre.nom');
 
 // Dashboard routes
 Route::get('/dashboard', function () {

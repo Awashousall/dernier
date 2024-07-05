@@ -23,6 +23,7 @@ class CreateEtudiantsTable extends Migration
             $table->json('bulletins_paths');
             $table->string('autre_diplome_path')->nullable();
             $table->string('cv_path')->nullable()->change();
+            $table->string('password');
             $table->timestamps();
         });
     }

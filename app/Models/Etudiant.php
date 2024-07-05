@@ -24,6 +24,12 @@ class Etudiant extends Model
         'autre_diplome_path',
         'cv_path',
         'statut',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 
     protected $casts = [

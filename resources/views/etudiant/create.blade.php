@@ -78,6 +78,14 @@
                     <label for="email" class="label-blue">Email:</label>
                     <input type="email" class="form-control" id="email" name="email" required>
                 </div>
+                <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" class="form-control" id="password" name="password" required>
+    </div>
+    <div class="form-group">
+        <label for="password_confirmation">Confirmation du mot de passe</label>
+        <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
+    </div>
 
                 <div class="form-group col-md-6">
                     <label for="telephone" class="label-blue">Numéro de Téléphone:</label>

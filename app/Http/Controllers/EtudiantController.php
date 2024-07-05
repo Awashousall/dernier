@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Etudiant;
 use App\Models\Convention;
 use Smalot\PdfParser\Parser;
+use Illuminate\Support\Facades\Hash;
 
 class EtudiantController extends Controller
 {
@@ -63,10 +64,6 @@ class EtudiantController extends Controller
 
         // Exemple d'extraction et d'analyse du texte du CV
         $cvText = $this->extractCVText($etudiant->cv_path);
-
-        // Vous pouvez ajouter ici la logique pour analyser le texte extrait du CV
-
-        // Par exemple, recherche de mots clés ou de compétences dans le texte
 
         return view('etudiant.cv', compact('etudiant', 'cvText'));
     }
@@ -129,6 +126,7 @@ class EtudiantController extends Controller
             'bulletins.*' => 'file|mimes:pdf|max:2048',
             'autre_diplome' => 'nullable|file|mimes:pdf|max:2048',
             'cv' => 'nullable|file|mimes:pdf|max:2048',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         // Gestion des fichiers
@@ -167,6 +165,7 @@ class EtudiantController extends Controller
             'bulletins_paths' => json_encode($bulletinsPaths),
             'autre_diplome_path' => $autreDiplomePath,
             'cv_path' => $cvPath,
+            'password' => Hash::make($validatedData['password']),
         ]);
 
         // Création de la convention
